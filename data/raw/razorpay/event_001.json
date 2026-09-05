@@ -1,0 +1,67 @@
+{
+  "captured_at": "2026-09-05T12:39:39.751397+00:00",
+  "environment": "test",
+  "provider": "razorpay",
+  "provider_event_id": "TYMI7Z8rtJ9nqk",
+  "raw_payload": {
+    "account_id": "acc_RfVBBjuhJuJ6E3",
+    "contains": [
+      "payment"
+    ],
+    "created_at": 1788611978,
+    "entity": "event",
+    "event": "payment.authorized",
+    "payload": {
+      "payment": {
+        "entity": {
+          "acquirer_data": {
+            "auth_code": "207520"
+          },
+          "amount": 10000,
+          "amount_refunded": 0,
+          "bank": null,
+          "captured": false,
+          "card": {
+            "emi": true,
+            "entity": "card",
+            "id": "card_TYMHybXoSgpCFJ",
+            "international": "[REDACTED]",
+            "issuer": "SBIN",
+            "last4": "[REDACTED]",
+            "name": "[REDACTED]",
+            "network": "Visa",
+            "sub_type": "consumer",
+            "token_iin": "[REDACTED]",
+            "type": "credit"
+          },
+          "card_id": "[REDACTED]",
+          "contact": "[REDACTED]",
+          "created_at": 1788611970,
+          "currency": "INR",
+          "description": "#TYK107pSXRGZSc",
+          "email": "[REDACTED]",
+          "entity": "payment",
+          "error_code": null,
+          "error_description": null,
+          "error_reason": null,
+          "error_source": null,
+          "error_step": null,
+          "fee": null,
+          "id": "pay_TYMHyQQlafQYze",
+          "international": "[REDACTED]",
+          "invoice_id": null,
+          "method": "card",
+          "notes": "[REDACTED]",
+          "order_id": "order_TYMFx4eO9nXnzQ",
+          "refund_status": null,
+          "reward": null,
+          "status": "authorized",
+          "tax": null,
+          "vpa": "[REDACTED]",
+          "wallet": null
+        }
+      }
+    }
+  },
+  "sanitized": true
+}

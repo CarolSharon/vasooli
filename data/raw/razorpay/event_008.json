@@ -1,0 +1,55 @@
+{
+  "captured_at": "2026-09-05T12:57:51.740213+00:00",
+  "environment": "test",
+  "provider": "razorpay",
+  "provider_event_id": "TYMbMoS3UZ4EW2",
+  "raw_payload": {
+    "account_id": "acc_RfVBBjuhJuJ6E3",
+    "contains": [
+      "payment"
+    ],
+    "created_at": 1788613071,
+    "entity": "event",
+    "event": "payment.captured",
+    "payload": {
+      "payment": {
+        "entity": {
+          "acquirer_data": {
+            "bank_transaction_id": "4083485"
+          },
+          "amount": 11000,
+          "amount_refunded": 0,
+          "bank": "BARB_R",
+          "base_amount": 11000,
+          "captured": true,
+          "card_id": "[REDACTED]",
+          "contact": "[REDACTED]",
+          "created_at": 1788613066,
+          "currency": "INR",
+          "description": "#TYMZFAPE4oLgE6",
+          "email": "[REDACTED]",
+          "entity": "payment",
+          "error_code": null,
+          "error_description": null,
+          "error_reason": null,
+          "error_source": null,
+          "error_step": null,
+          "fee": 286,
+          "id": "pay_TYMbH8P3x2PbVU",
+          "international": "[REDACTED]",
+          "invoice_id": null,
+          "method": "netbanking",
+          "notes": "[REDACTED]",
+          "order_id": "order_TYMZfd6s3sVuWm",
+          "refund_status": null,
+          "reward": null,
+          "status": "captured",
+          "tax": 44,
+          "vpa": "[REDACTED]",
+          "wallet": null
+        }
+      }
+    }
+  },
+  "sanitized": true
+}

@@ -1,0 +1,53 @@
+{
+  "captured_at": "2026-09-05T13:02:48.706581+00:00",
+  "environment": "test",
+  "provider": "razorpay",
+  "provider_event_id": "TYMgb1TUesodGX",
+  "raw_payload": {
+    "account_id": "acc_RfVBBjuhJuJ6E3",
+    "contains": [
+      "payment"
+    ],
+    "created_at": 1788613368,
+    "entity": "event",
+    "event": "payment.failed",
+    "payload": {
+      "payment": {
+        "entity": {
+          "acquirer_data": {
+            "bank_transaction_id": null
+          },
+          "amount": 10000,
+          "amount_refunded": 0,
+          "bank": "IBKL",
+          "captured": false,
+          "card_id": "[REDACTED]",
+          "contact": "[REDACTED]",
+          "created_at": 1788613363,
+          "currency": "INR",
+          "description": "#TYMdLcc0QSX2K9",
+          "email": "[REDACTED]",
+          "entity": "payment",
+          "error_code": "BAD_REQUEST_ERROR",
+          "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+          "error_reason": "payment_failed",
+          "error_source": "bank",
+          "error_step": "payment_authorization",
+          "fee": null,
+          "id": "pay_TYMgVK2dtcBlLL",
+          "international": "[REDACTED]",
+          "invoice_id": null,
+          "method": "netbanking",
+          "notes": "[REDACTED]",
+          "order_id": "order_TYMdncZEoD1maD",
+          "refund_status": null,
+          "status": "failed",
+          "tax": null,
+          "vpa": "[REDACTED]",
+          "wallet": null
+        }
+      }
+    }
+  },
+  "sanitized": true
+}

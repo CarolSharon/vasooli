@@ -1,0 +1,62 @@
+{
+  "captured_at": "2026-09-05T13:06:49.881011+00:00",
+  "environment": "test",
+  "provider": "razorpay",
+  "provider_event_id": "TYMkpNUWrZjUQD",
+  "raw_payload": {
+    "account_id": "acc_RfVBBjuhJuJ6E3",
+    "contains": [
+      "payment"
+    ],
+    "created_at": 1788613608,
+    "entity": "event",
+    "event": "payment.failed",
+    "payload": {
+      "payment": {
+        "entity": {
+          "acquirer_data": {
+            "auth_code": null
+          },
+          "amount": 10000,
+          "amount_refunded": 0,
+          "captured": false,
+          "card": {
+            "emi": false,
+            "entity": "card",
+            "id": "card_TYMkoT2dcc4Pf6",
+            "international": "[REDACTED]",
+            "issuer": null,
+            "last4": "[REDACTED]",
+            "name": "[REDACTED]",
+            "network": "Visa",
+            "sub_type": "consumer",
+            "token_iin": "[REDACTED]",
+            "type": "debit"
+          },
+          "card_id": "[REDACTED]",
+          "contact": "[REDACTED]",
+          "created_at": 1788613608,
+          "currency": "INR",
+          "description": "#TYMdLcc0QSX2K9",
+          "email": "[REDACTED]",
+          "entity": "payment",
+          "error_code": "BAD_REQUEST_ERROR",
+          "error_description": "Your payment could not be completed as this business accepts domestic (Indian) card payments only. Try another payment method.",
+          "error_reason": "international_transaction_not_allowed",
+          "error_source": "business",
+          "error_step": "payment_initiation",
+          "fee": null,
+          "id": "pay_TYMkoBd3wripHJ",
+          "international": "[REDACTED]",
+          "method": "card",
+          "notes": "[REDACTED]",
+          "order_id": "order_TYMdncZEoD1maD",
+          "refund_status": null,
+          "status": "failed",
+          "tax": null
+        }
+      }
+    }
+  },
+  "sanitized": true
+}

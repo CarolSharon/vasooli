@@ -1,0 +1,114 @@
+{
+  "captured_at": "2026-09-05T12:57:52.584746+00:00",
+  "environment": "test",
+  "provider": "razorpay",
+  "provider_event_id": "TYMbNjcF26FBJx",
+  "raw_payload": {
+    "account_id": "acc_RfVBBjuhJuJ6E3",
+    "contains": [
+      "payment_link",
+      "order",
+      "payment"
+    ],
+    "created_at": 1788612950,
+    "entity": "event",
+    "event": "payment_link.paid",
+    "payload": {
+      "order": {
+        "entity": {
+          "amount": 11000,
+          "amount_due": 0,
+          "amount_paid": 11000,
+          "attempts": 3,
+          "checkout": null,
+          "created_at": 1788612975,
+          "currency": "INR",
+          "description": null,
+          "entity": "order",
+          "id": "order_TYMZfd6s3sVuWm",
+          "notes": "[REDACTED]",
+          "offer_id": null,
+          "receipt": "vasooli-test-success-002",
+          "status": "paid"
+        }
+      },
+      "payment": {
+        "entity": {
+          "acquirer_data": {
+            "bank_transaction_id": "4083485"
+          },
+          "amount": 11000,
+          "amount_refunded": 0,
+          "amount_transferred": 0,
+          "bank": "BARB_R",
+          "base_amount": 11000,
+          "captured": true,
+          "card": null,
+          "card_id": "[REDACTED]",
+          "contact": "[REDACTED]",
+          "created_at": 1788613066,
+          "currency": "INR",
+          "description": "#TYMZFAPE4oLgE6",
+          "email": "[REDACTED]",
+          "entity": "payment",
+          "error_code": null,
+          "error_description": null,
+          "error_reason": null,
+          "error_source": null,
+          "error_step": null,
+          "fee": 286,
+          "fee_bearer": "platform",
+          "id": "pay_TYMbH8P3x2PbVU",
+          "international": "[REDACTED]",
+          "invoice_id": null,
+          "method": "netbanking",
+          "notes": "[REDACTED]",
+          "order_id": "order_TYMZfd6s3sVuWm",
+          "refund_status": null,
+          "status": "captured",
+          "tax": 44,
+          "vpa": "[REDACTED]",
+          "wallet": null
+        }
+      },
+      "payment_link": {
+        "entity": {
+          "accept_partial": false,
+          "allow_full_payment": false,
+          "amount": 11000,
+          "amount_paid": 11000,
+          "cancelled_at": 0,
+          "created_at": 1788612950,
+          "currency": "INR",
+          "customer": {
+            "contact": "[REDACTED]",
+            "email": "[REDACTED]"
+          },
+          "description": "Vasooli success test 002",
+          "expire_by": 0,
+          "expired_at": 0,
+          "first_min_partial_amount": 0,
+          "id": "plink_TYMZFAPE4oLgE6",
+          "notes": "[REDACTED]",
+          "notify": {
+            "email": "[REDACTED]",
+            "sms": false,
+            "whatsapp": false
+          },
+          "order_id": "order_TYMZfd6s3sVuWm",
+          "payment_plan": false,
+          "reference_id": "vasooli-test-success-002",
+          "reminder_enable": false,
+          "reminders": {},
+          "short_url": "https://rzp.io/rzp/ymItOTX",
+          "status": "paid",
+          "updated_at": 1788613071,
+          "upi_link": false,
+          "user_id": "RfVB5oY8YeU08k",
+          "whatsapp_link": false
+        }
+      }
+    }
+  },
+  "sanitized": true
+}
