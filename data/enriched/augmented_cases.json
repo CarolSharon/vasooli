@@ -1,0 +1,2561 @@
+{
+  "augmentation_version": "1.0.0",
+  "case_count": 28,
+  "cases": [
+    {
+      "case_id": "razorpay_case_0001",
+      "derived_context": {
+        "failure_count_band": "low",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T12:39:39.751397+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMI7Z8rtJ9nqk",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment"
+          ],
+          "created_at": 1788611978,
+          "entity": "event",
+          "event": "payment.authorized",
+          "payload": {
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "auth_code": "207520"
+                },
+                "amount": 10000,
+                "amount_refunded": 0,
+                "bank": null,
+                "captured": false,
+                "card": {
+                  "emi": true,
+                  "entity": "card",
+                  "id": "card_TYMHybXoSgpCFJ",
+                  "international": "[REDACTED]",
+                  "issuer": "SBIN",
+                  "last4": "[REDACTED]",
+                  "name": "[REDACTED]",
+                  "network": "Visa",
+                  "sub_type": "consumer",
+                  "token_iin": "[REDACTED]",
+                  "type": "credit"
+                },
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788611970,
+                "currency": "INR",
+                "description": "#TYK107pSXRGZSc",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": null,
+                "error_description": null,
+                "error_reason": null,
+                "error_source": null,
+                "error_step": null,
+                "fee": null,
+                "id": "pay_TYMHyQQlafQYze",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "card",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMFx4eO9nXnzQ",
+                "refund_status": null,
+                "reward": null,
+                "status": "authorized",
+                "tax": null,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0001",
+        "customer_tenure_months": 41,
+        "historical_failures": 0,
+        "lifetime_value_paise": 20000,
+        "preferred_language": "hinglish",
+        "voice_consent": false,
+        "whatsapp_consent": false
+      }
+    },
+    {
+      "case_id": "razorpay_case_0002",
+      "derived_context": {
+        "failure_count_band": "high",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T12:39:39.974137+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMI8sauFlZyjc",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment"
+          ],
+          "created_at": 1788611979,
+          "entity": "event",
+          "event": "payment.captured",
+          "payload": {
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "auth_code": "207520"
+                },
+                "amount": 10000,
+                "amount_refunded": 0,
+                "bank": null,
+                "base_amount": 10000,
+                "captured": true,
+                "card": {
+                  "emi": true,
+                  "entity": "card",
+                  "id": "card_TYMHybXoSgpCFJ",
+                  "international": "[REDACTED]",
+                  "issuer": "SBIN",
+                  "last4": "[REDACTED]",
+                  "name": "[REDACTED]",
+                  "network": "Visa",
+                  "sub_type": "consumer",
+                  "token_iin": "[REDACTED]",
+                  "type": "credit"
+                },
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788611970,
+                "currency": "INR",
+                "description": "#TYK107pSXRGZSc",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": null,
+                "error_description": null,
+                "error_reason": null,
+                "error_source": null,
+                "error_step": null,
+                "fee": 220,
+                "id": "pay_TYMHyQQlafQYze",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "card",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMFx4eO9nXnzQ",
+                "refund_status": null,
+                "reward": null,
+                "status": "captured",
+                "tax": 0,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0002",
+        "customer_tenure_months": 9,
+        "historical_failures": 5,
+        "lifetime_value_paise": 30000,
+        "preferred_language": "en",
+        "voice_consent": false,
+        "whatsapp_consent": true
+      }
+    },
+    {
+      "case_id": "razorpay_case_0003",
+      "derived_context": {
+        "failure_count_band": "low",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T12:39:40.618349+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMI9NIT22E0Nc",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment",
+            "order"
+          ],
+          "created_at": 1788611979,
+          "entity": "event",
+          "event": "order.paid",
+          "payload": {
+            "order": {
+              "entity": {
+                "amount": 10000,
+                "amount_due": 0,
+                "amount_paid": 10000,
+                "attempts": 1,
+                "checkout": null,
+                "created_at": 1788611855,
+                "currency": "INR",
+                "description": null,
+                "entity": "order",
+                "id": "order_TYMFx4eO9nXnzQ",
+                "notes": "[REDACTED]",
+                "offer_id": null,
+                "receipt": "vasooli-test-success-001",
+                "status": "paid"
+              }
+            },
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "auth_code": "207520"
+                },
+                "amount": 10000,
+                "amount_refunded": 0,
+                "bank": null,
+                "captured": true,
+                "card": {
+                  "emi": true,
+                  "entity": "card",
+                  "id": "card_TYMHybXoSgpCFJ",
+                  "international": "[REDACTED]",
+                  "issuer": "SBIN",
+                  "last4": "[REDACTED]",
+                  "name": "[REDACTED]",
+                  "network": "Visa",
+                  "sub_type": "consumer",
+                  "token_iin": "[REDACTED]",
+                  "type": "credit"
+                },
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788611970,
+                "currency": "INR",
+                "description": "#TYK107pSXRGZSc",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": null,
+                "error_description": null,
+                "error_reason": null,
+                "error_source": null,
+                "error_step": null,
+                "fee": 220,
+                "id": "pay_TYMHyQQlafQYze",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "card",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMFx4eO9nXnzQ",
+                "refund_status": null,
+                "reward": null,
+                "status": "captured",
+                "tax": 0,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0003",
+        "customer_tenure_months": 3,
+        "historical_failures": 0,
+        "lifetime_value_paise": 30000,
+        "preferred_language": "hi",
+        "voice_consent": true,
+        "whatsapp_consent": false
+      }
+    },
+    {
+      "case_id": "razorpay_case_0004",
+      "derived_context": {
+        "failure_count_band": "low",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T12:39:40.738488+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMIA3CYfmOslH",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment_link",
+            "order",
+            "payment"
+          ],
+          "created_at": 1788603962,
+          "entity": "event",
+          "event": "payment_link.paid",
+          "payload": {
+            "order": {
+              "entity": {
+                "amount": 10000,
+                "amount_due": 0,
+                "amount_paid": 10000,
+                "attempts": 1,
+                "checkout": null,
+                "created_at": 1788611855,
+                "currency": "INR",
+                "description": null,
+                "entity": "order",
+                "id": "order_TYMFx4eO9nXnzQ",
+                "notes": "[REDACTED]",
+                "offer_id": null,
+                "receipt": "vasooli-test-success-001",
+                "status": "paid"
+              }
+            },
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "auth_code": "207520"
+                },
+                "amount": 10000,
+                "amount_refunded": 0,
+                "amount_transferred": 0,
+                "bank": null,
+                "base_amount": 10000,
+                "captured": true,
+                "card": {
+                  "emi": true,
+                  "entity": "card",
+                  "id": "card_TYMHybXoSgpCFJ",
+                  "international": "[REDACTED]",
+                  "issuer": "SBIN",
+                  "last4": "[REDACTED]",
+                  "name": "[REDACTED]",
+                  "network": "Visa",
+                  "sub_type": "consumer",
+                  "token_iin": "[REDACTED]",
+                  "type": "credit"
+                },
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788611970,
+                "currency": "INR",
+                "description": "#TYK107pSXRGZSc",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": null,
+                "error_description": null,
+                "error_reason": null,
+                "error_source": null,
+                "error_step": null,
+                "fee": 220,
+                "fee_bearer": "platform",
+                "id": "pay_TYMHyQQlafQYze",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "card",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMFx4eO9nXnzQ",
+                "refund_status": null,
+                "status": "captured",
+                "tax": 0,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            },
+            "payment_link": {
+              "entity": {
+                "accept_partial": false,
+                "allow_full_payment": false,
+                "amount": 10000,
+                "amount_paid": 10000,
+                "cancelled_at": 0,
+                "created_at": 1788603962,
+                "currency": "INR",
+                "customer": {
+                  "contact": "[REDACTED]",
+                  "email": "[REDACTED]"
+                },
+                "description": "Test  Customer",
+                "expire_by": 0,
+                "expired_at": 0,
+                "first_min_partial_amount": 0,
+                "id": "plink_TYK107pSXRGZSc",
+                "notes": "[REDACTED]",
+                "notify": {
+                  "email": "[REDACTED]",
+                  "sms": false,
+                  "whatsapp": false
+                },
+                "order_id": "order_TYMFx4eO9nXnzQ",
+                "payment_plan": false,
+                "reference_id": "vasooli-test-success-001",
+                "reminder_enable": false,
+                "reminders": {
+                  "status": "failed"
+                },
+                "short_url": "https://rzp.io/rzp/QrjFC2vK",
+                "status": "paid",
+                "updated_at": 1788611979,
+                "upi_link": false,
+                "user_id": "RfVB5oY8YeU08k",
+                "whatsapp_link": false
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0004",
+        "customer_tenure_months": 39,
+        "historical_failures": 0,
+        "lifetime_value_paise": 100000,
+        "preferred_language": "hi",
+        "voice_consent": true,
+        "whatsapp_consent": true
+      }
+    },
+    {
+      "case_id": "razorpay_case_0005",
+      "derived_context": {
+        "failure_count_band": "high",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T12:57:06.346507+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMaYj4hNd1wYp",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment"
+          ],
+          "created_at": 1788613025,
+          "entity": "event",
+          "event": "payment.failed",
+          "payload": {
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": null
+                },
+                "amount": 11000,
+                "amount_refunded": 0,
+                "bank": "BARB_R",
+                "captured": false,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613016,
+                "currency": "INR",
+                "description": "#TYMZFAPE4oLgE6",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": "BAD_REQUEST_ERROR",
+                "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+                "error_reason": "payment_failed",
+                "error_source": "bank",
+                "error_step": "payment_authorization",
+                "fee": null,
+                "id": "pay_TYMaOKPJ06LESv",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMZfd6s3sVuWm",
+                "refund_status": null,
+                "status": "failed",
+                "tax": null,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0005",
+        "customer_tenure_months": 45,
+        "historical_failures": 4,
+        "lifetime_value_paise": 88000,
+        "preferred_language": "hi",
+        "voice_consent": true,
+        "whatsapp_consent": false
+      }
+    },
+    {
+      "case_id": "razorpay_case_0006",
+      "derived_context": {
+        "failure_count_band": "high",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T12:57:29.228279+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMayIL7NOMtYC",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment"
+          ],
+          "created_at": 1788613048,
+          "entity": "event",
+          "event": "payment.failed",
+          "payload": {
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": null
+                },
+                "amount": 11000,
+                "amount_refunded": 0,
+                "bank": "BARB_R",
+                "captured": false,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613044,
+                "currency": "INR",
+                "description": "#TYMZFAPE4oLgE6",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": "BAD_REQUEST_ERROR",
+                "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+                "error_reason": "payment_failed",
+                "error_source": "bank",
+                "error_step": "payment_authorization",
+                "fee": null,
+                "id": "pay_TYMasDHJ1vkoX0",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMZfd6s3sVuWm",
+                "refund_status": null,
+                "status": "failed",
+                "tax": null,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0006",
+        "customer_tenure_months": 18,
+        "historical_failures": 6,
+        "lifetime_value_paise": 165000,
+        "preferred_language": "en",
+        "voice_consent": true,
+        "whatsapp_consent": true
+      }
+    },
+    {
+      "case_id": "razorpay_case_0007",
+      "derived_context": {
+        "failure_count_band": "high",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T12:57:51.007893+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMbM4WGKR7rlj",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment"
+          ],
+          "created_at": 1788613070,
+          "entity": "event",
+          "event": "payment.authorized",
+          "payload": {
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": "4083485"
+                },
+                "amount": 11000,
+                "amount_refunded": 0,
+                "bank": "BARB_R",
+                "captured": false,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613066,
+                "currency": "INR",
+                "description": "#TYMZFAPE4oLgE6",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": null,
+                "error_description": null,
+                "error_reason": null,
+                "error_source": null,
+                "error_step": null,
+                "fee": null,
+                "id": "pay_TYMbH8P3x2PbVU",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMZfd6s3sVuWm",
+                "refund_status": null,
+                "status": "authorized",
+                "tax": null,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0007",
+        "customer_tenure_months": 11,
+        "historical_failures": 5,
+        "lifetime_value_paise": 88000,
+        "preferred_language": "hinglish",
+        "voice_consent": false,
+        "whatsapp_consent": false
+      }
+    },
+    {
+      "case_id": "razorpay_case_0008",
+      "derived_context": {
+        "failure_count_band": "high",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T12:57:51.740213+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMbMoS3UZ4EW2",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment"
+          ],
+          "created_at": 1788613071,
+          "entity": "event",
+          "event": "payment.captured",
+          "payload": {
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": "4083485"
+                },
+                "amount": 11000,
+                "amount_refunded": 0,
+                "bank": "BARB_R",
+                "base_amount": 11000,
+                "captured": true,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613066,
+                "currency": "INR",
+                "description": "#TYMZFAPE4oLgE6",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": null,
+                "error_description": null,
+                "error_reason": null,
+                "error_source": null,
+                "error_step": null,
+                "fee": 286,
+                "id": "pay_TYMbH8P3x2PbVU",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMZfd6s3sVuWm",
+                "refund_status": null,
+                "reward": null,
+                "status": "captured",
+                "tax": 44,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0008",
+        "customer_tenure_months": 14,
+        "historical_failures": 6,
+        "lifetime_value_paise": 77000,
+        "preferred_language": "en",
+        "voice_consent": false,
+        "whatsapp_consent": false
+      }
+    },
+    {
+      "case_id": "razorpay_case_0009",
+      "derived_context": {
+        "failure_count_band": "low",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T12:57:52.478829+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMbN9Gce1WwN2",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment",
+            "order"
+          ],
+          "created_at": 1788613071,
+          "entity": "event",
+          "event": "order.paid",
+          "payload": {
+            "order": {
+              "entity": {
+                "amount": 11000,
+                "amount_due": 0,
+                "amount_paid": 11000,
+                "attempts": 3,
+                "checkout": null,
+                "created_at": 1788612975,
+                "currency": "INR",
+                "description": null,
+                "entity": "order",
+                "id": "order_TYMZfd6s3sVuWm",
+                "notes": "[REDACTED]",
+                "offer_id": null,
+                "receipt": "vasooli-test-success-002",
+                "status": "paid"
+              }
+            },
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": "4083485"
+                },
+                "amount": 11000,
+                "amount_refunded": 0,
+                "bank": "BARB_R",
+                "captured": true,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613066,
+                "currency": "INR",
+                "description": "#TYMZFAPE4oLgE6",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": null,
+                "error_description": null,
+                "error_reason": null,
+                "error_source": null,
+                "error_step": null,
+                "fee": 286,
+                "id": "pay_TYMbH8P3x2PbVU",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMZfd6s3sVuWm",
+                "refund_status": null,
+                "reward": null,
+                "status": "captured",
+                "tax": 44,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0009",
+        "customer_tenure_months": 7,
+        "historical_failures": 2,
+        "lifetime_value_paise": 165000,
+        "preferred_language": "hinglish",
+        "voice_consent": false,
+        "whatsapp_consent": true
+      }
+    },
+    {
+      "case_id": "razorpay_case_0010",
+      "derived_context": {
+        "failure_count_band": "high",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T12:57:52.584746+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMbNjcF26FBJx",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment_link",
+            "order",
+            "payment"
+          ],
+          "created_at": 1788612950,
+          "entity": "event",
+          "event": "payment_link.paid",
+          "payload": {
+            "order": {
+              "entity": {
+                "amount": 11000,
+                "amount_due": 0,
+                "amount_paid": 11000,
+                "attempts": 3,
+                "checkout": null,
+                "created_at": 1788612975,
+                "currency": "INR",
+                "description": null,
+                "entity": "order",
+                "id": "order_TYMZfd6s3sVuWm",
+                "notes": "[REDACTED]",
+                "offer_id": null,
+                "receipt": "vasooli-test-success-002",
+                "status": "paid"
+              }
+            },
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": "4083485"
+                },
+                "amount": 11000,
+                "amount_refunded": 0,
+                "amount_transferred": 0,
+                "bank": "BARB_R",
+                "base_amount": 11000,
+                "captured": true,
+                "card": null,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613066,
+                "currency": "INR",
+                "description": "#TYMZFAPE4oLgE6",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": null,
+                "error_description": null,
+                "error_reason": null,
+                "error_source": null,
+                "error_step": null,
+                "fee": 286,
+                "fee_bearer": "platform",
+                "id": "pay_TYMbH8P3x2PbVU",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMZfd6s3sVuWm",
+                "refund_status": null,
+                "status": "captured",
+                "tax": 44,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            },
+            "payment_link": {
+              "entity": {
+                "accept_partial": false,
+                "allow_full_payment": false,
+                "amount": 11000,
+                "amount_paid": 11000,
+                "cancelled_at": 0,
+                "created_at": 1788612950,
+                "currency": "INR",
+                "customer": {
+                  "contact": "[REDACTED]",
+                  "email": "[REDACTED]"
+                },
+                "description": "Vasooli success test 002",
+                "expire_by": 0,
+                "expired_at": 0,
+                "first_min_partial_amount": 0,
+                "id": "plink_TYMZFAPE4oLgE6",
+                "notes": "[REDACTED]",
+                "notify": {
+                  "email": "[REDACTED]",
+                  "sms": false,
+                  "whatsapp": false
+                },
+                "order_id": "order_TYMZfd6s3sVuWm",
+                "payment_plan": false,
+                "reference_id": "vasooli-test-success-002",
+                "reminder_enable": false,
+                "reminders": {},
+                "short_url": "https://rzp.io/rzp/ymItOTX",
+                "status": "paid",
+                "updated_at": 1788613071,
+                "upi_link": false,
+                "user_id": "RfVB5oY8YeU08k",
+                "whatsapp_link": false
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0010",
+        "customer_tenure_months": 3,
+        "historical_failures": 5,
+        "lifetime_value_paise": 99000,
+        "preferred_language": "en",
+        "voice_consent": true,
+        "whatsapp_consent": true
+      }
+    },
+    {
+      "case_id": "razorpay_case_0011",
+      "derived_context": {
+        "failure_count_band": "low",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T13:01:25.391324+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMf7XzlGzgSOA",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment"
+          ],
+          "created_at": 1788613284,
+          "entity": "event",
+          "event": "payment.failed",
+          "payload": {
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": null
+                },
+                "amount": 10000,
+                "amount_refunded": 0,
+                "bank": "CNRB",
+                "captured": false,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613280,
+                "currency": "INR",
+                "description": "#TYMdLcc0QSX2K9",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": "BAD_REQUEST_ERROR",
+                "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+                "error_reason": "payment_failed",
+                "error_source": "bank",
+                "error_step": "payment_authorization",
+                "fee": null,
+                "id": "pay_TYMf2VKP79D6cx",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMdncZEoD1maD",
+                "refund_status": null,
+                "status": "failed",
+                "tax": null,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0011",
+        "customer_tenure_months": 25,
+        "historical_failures": 0,
+        "lifetime_value_paise": 100000,
+        "preferred_language": "hinglish",
+        "voice_consent": true,
+        "whatsapp_consent": true
+      }
+    },
+    {
+      "case_id": "razorpay_case_0012",
+      "derived_context": {
+        "failure_count_band": "high",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T13:02:01.974353+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMfm10wPMctcg",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment"
+          ],
+          "created_at": 1788613321,
+          "entity": "event",
+          "event": "payment.authorized",
+          "payload": {
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": "1064165"
+                },
+                "amount": 10000,
+                "amount_refunded": 0,
+                "bank": "IBKL",
+                "captured": false,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613318,
+                "currency": "INR",
+                "description": "#TYMdLcc0QSX2K9",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": null,
+                "error_description": null,
+                "error_reason": null,
+                "error_source": null,
+                "error_step": null,
+                "fee": null,
+                "id": "pay_TYMfi0qqAzSnKp",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMdncZEoD1maD",
+                "refund_status": null,
+                "status": "authorized",
+                "tax": null,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0012",
+        "customer_tenure_months": 40,
+        "historical_failures": 6,
+        "lifetime_value_paise": 70000,
+        "preferred_language": "hi",
+        "voice_consent": false,
+        "whatsapp_consent": true
+      }
+    },
+    {
+      "case_id": "razorpay_case_0013",
+      "derived_context": {
+        "failure_count_band": "high",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T13:02:03.270279+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMfmt6HSKyD3T",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment"
+          ],
+          "created_at": 1788613322,
+          "entity": "event",
+          "event": "payment.captured",
+          "payload": {
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": "1064165"
+                },
+                "amount": 10000,
+                "amount_refunded": 0,
+                "bank": "IBKL",
+                "base_amount": 10000,
+                "captured": true,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613318,
+                "currency": "INR",
+                "description": "#TYMdLcc0QSX2K9",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": null,
+                "error_description": null,
+                "error_reason": null,
+                "error_source": null,
+                "error_step": null,
+                "fee": 260,
+                "id": "pay_TYMfi0qqAzSnKp",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMdncZEoD1maD",
+                "refund_status": null,
+                "reward": null,
+                "status": "captured",
+                "tax": 40,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0013",
+        "customer_tenure_months": 3,
+        "historical_failures": 5,
+        "lifetime_value_paise": 50000,
+        "preferred_language": "hinglish",
+        "voice_consent": false,
+        "whatsapp_consent": true
+      }
+    },
+    {
+      "case_id": "razorpay_case_0014",
+      "derived_context": {
+        "failure_count_band": "high",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T13:02:03.993077+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMfoE7nYZFSpT",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment_link",
+            "order",
+            "payment"
+          ],
+          "created_at": 1788613184,
+          "entity": "event",
+          "event": "payment_link.partially_paid",
+          "payload": {
+            "order": {
+              "entity": {
+                "amount": 60000,
+                "amount_due": 50000,
+                "amount_paid": 10000,
+                "attempts": 2,
+                "checkout": null,
+                "created_at": 1788613209,
+                "currency": "INR",
+                "description": null,
+                "entity": "order",
+                "id": "order_TYMdncZEoD1maD",
+                "notes": "[REDACTED]",
+                "offer_id": null,
+                "receipt": "vasooli-test-partial-003",
+                "status": "attempted"
+              }
+            },
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": "1064165"
+                },
+                "amount": 10000,
+                "amount_refunded": 0,
+                "amount_transferred": 0,
+                "bank": "IBKL",
+                "base_amount": 10000,
+                "captured": true,
+                "card": null,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613318,
+                "currency": "INR",
+                "description": "#TYMdLcc0QSX2K9",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": null,
+                "error_description": null,
+                "error_reason": null,
+                "error_source": null,
+                "error_step": null,
+                "fee": 260,
+                "fee_bearer": "platform",
+                "id": "pay_TYMfi0qqAzSnKp",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMdncZEoD1maD",
+                "refund_status": null,
+                "status": "captured",
+                "tax": 40,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            },
+            "payment_link": {
+              "entity": {
+                "accept_partial": true,
+                "allow_full_payment": false,
+                "amount": 60000,
+                "amount_paid": 10000,
+                "cancelled_at": 0,
+                "created_at": 1788613184,
+                "currency": "INR",
+                "customer": {
+                  "contact": "[REDACTED]",
+                  "email": "[REDACTED]"
+                },
+                "description": "Vasooli partial payment test 003",
+                "expire_by": 0,
+                "expired_at": 0,
+                "first_min_partial_amount": 100,
+                "id": "plink_TYMdLcc0QSX2K9",
+                "notes": "[REDACTED]",
+                "notify": {
+                  "email": "[REDACTED]",
+                  "sms": false,
+                  "whatsapp": false
+                },
+                "order_id": "order_TYMdncZEoD1maD",
+                "payment_plan": false,
+                "reference_id": "vasooli-test-partial-003",
+                "reminder_enable": false,
+                "reminders": {},
+                "short_url": "https://rzp.io/rzp/WXnoZAC",
+                "status": "partially_paid",
+                "updated_at": 1788613322,
+                "upi_link": false,
+                "user_id": "RfVB5oY8YeU08k",
+                "whatsapp_link": false
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0014",
+        "customer_tenure_months": 15,
+        "historical_failures": 6,
+        "lifetime_value_paise": 30000,
+        "preferred_language": "ta",
+        "voice_consent": false,
+        "whatsapp_consent": false
+      }
+    },
+    {
+      "case_id": "razorpay_case_0015",
+      "derived_context": {
+        "failure_count_band": "high",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T13:02:48.706581+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMgb1TUesodGX",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment"
+          ],
+          "created_at": 1788613368,
+          "entity": "event",
+          "event": "payment.failed",
+          "payload": {
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": null
+                },
+                "amount": 10000,
+                "amount_refunded": 0,
+                "bank": "IBKL",
+                "captured": false,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613363,
+                "currency": "INR",
+                "description": "#TYMdLcc0QSX2K9",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": "BAD_REQUEST_ERROR",
+                "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+                "error_reason": "payment_failed",
+                "error_source": "bank",
+                "error_step": "payment_authorization",
+                "fee": null,
+                "id": "pay_TYMgVK2dtcBlLL",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMdncZEoD1maD",
+                "refund_status": null,
+                "status": "failed",
+                "tax": null,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0015",
+        "customer_tenure_months": 41,
+        "historical_failures": 6,
+        "lifetime_value_paise": 70000,
+        "preferred_language": "hi",
+        "voice_consent": false,
+        "whatsapp_consent": false
+      }
+    },
+    {
+      "case_id": "razorpay_case_0016",
+      "derived_context": {
+        "failure_count_band": "high",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T13:03:23.787885+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMhDIQg6qufIc",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment"
+          ],
+          "created_at": 1788613403,
+          "entity": "event",
+          "event": "payment.authorized",
+          "payload": {
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": "5922903"
+                },
+                "amount": 10000,
+                "amount_refunded": 0,
+                "bank": "IBKL",
+                "captured": false,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613396,
+                "currency": "INR",
+                "description": "#TYMdLcc0QSX2K9",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": null,
+                "error_description": null,
+                "error_reason": null,
+                "error_source": null,
+                "error_step": null,
+                "fee": null,
+                "id": "pay_TYMh521wEc3spA",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMdncZEoD1maD",
+                "refund_status": null,
+                "status": "authorized",
+                "tax": null,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0016",
+        "customer_tenure_months": 14,
+        "historical_failures": 5,
+        "lifetime_value_paise": 60000,
+        "preferred_language": "en",
+        "voice_consent": true,
+        "whatsapp_consent": true
+      }
+    },
+    {
+      "case_id": "razorpay_case_0017",
+      "derived_context": {
+        "failure_count_band": "high",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T13:03:24.534273+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMhE7tApHTICC",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment"
+          ],
+          "created_at": 1788613404,
+          "entity": "event",
+          "event": "payment.captured",
+          "payload": {
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": "5922903"
+                },
+                "amount": 10000,
+                "amount_refunded": 0,
+                "bank": "IBKL",
+                "base_amount": 10000,
+                "captured": true,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613396,
+                "currency": "INR",
+                "description": "#TYMdLcc0QSX2K9",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": null,
+                "error_description": null,
+                "error_reason": null,
+                "error_source": null,
+                "error_step": null,
+                "fee": 260,
+                "id": "pay_TYMh521wEc3spA",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMdncZEoD1maD",
+                "refund_status": null,
+                "reward": null,
+                "status": "captured",
+                "tax": 40,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0017",
+        "customer_tenure_months": 11,
+        "historical_failures": 4,
+        "lifetime_value_paise": 130000,
+        "preferred_language": "hi",
+        "voice_consent": false,
+        "whatsapp_consent": false
+      }
+    },
+    {
+      "case_id": "razorpay_case_0018",
+      "derived_context": {
+        "failure_count_band": "low",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T13:03:25.338035+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMhF2P71aeDoB",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment_link",
+            "order",
+            "payment"
+          ],
+          "created_at": 1788613184,
+          "entity": "event",
+          "event": "payment_link.partially_paid",
+          "payload": {
+            "order": {
+              "entity": {
+                "amount": 60000,
+                "amount_due": 40000,
+                "amount_paid": 20000,
+                "attempts": 4,
+                "checkout": null,
+                "created_at": 1788613209,
+                "currency": "INR",
+                "description": null,
+                "entity": "order",
+                "id": "order_TYMdncZEoD1maD",
+                "notes": "[REDACTED]",
+                "offer_id": null,
+                "receipt": "vasooli-test-partial-003",
+                "status": "attempted"
+              }
+            },
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": "5922903"
+                },
+                "amount": 10000,
+                "amount_refunded": 0,
+                "amount_transferred": 0,
+                "bank": "IBKL",
+                "base_amount": 10000,
+                "captured": true,
+                "card": null,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613396,
+                "currency": "INR",
+                "description": "#TYMdLcc0QSX2K9",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": null,
+                "error_description": null,
+                "error_reason": null,
+                "error_source": null,
+                "error_step": null,
+                "fee": 260,
+                "fee_bearer": "platform",
+                "id": "pay_TYMh521wEc3spA",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMdncZEoD1maD",
+                "refund_status": null,
+                "status": "captured",
+                "tax": 40,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            },
+            "payment_link": {
+              "entity": {
+                "accept_partial": true,
+                "allow_full_payment": false,
+                "amount": 60000,
+                "amount_paid": 20000,
+                "cancelled_at": 0,
+                "created_at": 1788613184,
+                "currency": "INR",
+                "customer": {
+                  "contact": "[REDACTED]",
+                  "email": "[REDACTED]"
+                },
+                "description": "Vasooli partial payment test 003",
+                "expire_by": 0,
+                "expired_at": 0,
+                "first_min_partial_amount": 100,
+                "id": "plink_TYMdLcc0QSX2K9",
+                "notes": "[REDACTED]",
+                "notify": {
+                  "email": "[REDACTED]",
+                  "sms": false,
+                  "whatsapp": false
+                },
+                "order_id": "order_TYMdncZEoD1maD",
+                "payment_plan": false,
+                "reference_id": "vasooli-test-partial-003",
+                "reminder_enable": false,
+                "reminders": {},
+                "short_url": "https://rzp.io/rzp/WXnoZAC",
+                "status": "partially_paid",
+                "updated_at": 1788613404,
+                "upi_link": false,
+                "user_id": "RfVB5oY8YeU08k",
+                "whatsapp_link": false
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0018",
+        "customer_tenure_months": 25,
+        "historical_failures": 2,
+        "lifetime_value_paise": 120000,
+        "preferred_language": "hi",
+        "voice_consent": false,
+        "whatsapp_consent": true
+      }
+    },
+    {
+      "case_id": "razorpay_case_0019",
+      "derived_context": {
+        "failure_count_band": "low",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T13:04:08.496084+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMi07ZUeXgQQk",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment"
+          ],
+          "created_at": 1788613448,
+          "entity": "event",
+          "event": "payment.authorized",
+          "payload": {
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": "6220448"
+                },
+                "amount": 10000,
+                "amount_refunded": 0,
+                "bank": "IBKL",
+                "captured": false,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613443,
+                "currency": "INR",
+                "description": "#TYMdLcc0QSX2K9",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": null,
+                "error_description": null,
+                "error_reason": null,
+                "error_source": null,
+                "error_step": null,
+                "fee": null,
+                "id": "pay_TYMhuBYfSK9n8M",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMdncZEoD1maD",
+                "refund_status": null,
+                "status": "authorized",
+                "tax": null,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0019",
+        "customer_tenure_months": 4,
+        "historical_failures": 1,
+        "lifetime_value_paise": 150000,
+        "preferred_language": "en",
+        "voice_consent": false,
+        "whatsapp_consent": true
+      }
+    },
+    {
+      "case_id": "razorpay_case_0020",
+      "derived_context": {
+        "failure_count_band": "low",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T13:04:09.277525+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMi0wzUtUf2HX",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment"
+          ],
+          "created_at": 1788613448,
+          "entity": "event",
+          "event": "payment.captured",
+          "payload": {
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": "6220448"
+                },
+                "amount": 10000,
+                "amount_refunded": 0,
+                "bank": "IBKL",
+                "base_amount": 10000,
+                "captured": true,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613443,
+                "currency": "INR",
+                "description": "#TYMdLcc0QSX2K9",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": null,
+                "error_description": null,
+                "error_reason": null,
+                "error_source": null,
+                "error_step": null,
+                "fee": 260,
+                "id": "pay_TYMhuBYfSK9n8M",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMdncZEoD1maD",
+                "refund_status": null,
+                "reward": null,
+                "status": "captured",
+                "tax": 40,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0020",
+        "customer_tenure_months": 26,
+        "historical_failures": 2,
+        "lifetime_value_paise": 30000,
+        "preferred_language": "hi",
+        "voice_consent": true,
+        "whatsapp_consent": true
+      }
+    },
+    {
+      "case_id": "razorpay_case_0021",
+      "derived_context": {
+        "failure_count_band": "high",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T13:04:10.057665+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMi1pwyzXUGeb",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment_link",
+            "order",
+            "payment"
+          ],
+          "created_at": 1788613184,
+          "entity": "event",
+          "event": "payment_link.partially_paid",
+          "payload": {
+            "order": {
+              "entity": {
+                "amount": 60000,
+                "amount_due": 30000,
+                "amount_paid": 30000,
+                "attempts": 5,
+                "checkout": null,
+                "created_at": 1788613209,
+                "currency": "INR",
+                "description": null,
+                "entity": "order",
+                "id": "order_TYMdncZEoD1maD",
+                "notes": "[REDACTED]",
+                "offer_id": null,
+                "receipt": "vasooli-test-partial-003",
+                "status": "attempted"
+              }
+            },
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": "6220448"
+                },
+                "amount": 10000,
+                "amount_refunded": 0,
+                "amount_transferred": 0,
+                "bank": "IBKL",
+                "base_amount": 10000,
+                "captured": true,
+                "card": null,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613443,
+                "currency": "INR",
+                "description": "#TYMdLcc0QSX2K9",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": null,
+                "error_description": null,
+                "error_reason": null,
+                "error_source": null,
+                "error_step": null,
+                "fee": 260,
+                "fee_bearer": "platform",
+                "id": "pay_TYMhuBYfSK9n8M",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMdncZEoD1maD",
+                "refund_status": null,
+                "status": "captured",
+                "tax": 40,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            },
+            "payment_link": {
+              "entity": {
+                "accept_partial": true,
+                "allow_full_payment": false,
+                "amount": 60000,
+                "amount_paid": 30000,
+                "cancelled_at": 0,
+                "created_at": 1788613184,
+                "currency": "INR",
+                "customer": {
+                  "contact": "[REDACTED]",
+                  "email": "[REDACTED]"
+                },
+                "description": "Vasooli partial payment test 003",
+                "expire_by": 0,
+                "expired_at": 0,
+                "first_min_partial_amount": 100,
+                "id": "plink_TYMdLcc0QSX2K9",
+                "notes": "[REDACTED]",
+                "notify": {
+                  "email": "[REDACTED]",
+                  "sms": false,
+                  "whatsapp": false
+                },
+                "order_id": "order_TYMdncZEoD1maD",
+                "payment_plan": false,
+                "reference_id": "vasooli-test-partial-003",
+                "reminder_enable": false,
+                "reminders": {},
+                "short_url": "https://rzp.io/rzp/WXnoZAC",
+                "status": "partially_paid",
+                "updated_at": 1788613448,
+                "upi_link": false,
+                "user_id": "RfVB5oY8YeU08k",
+                "whatsapp_link": false
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0021",
+        "customer_tenure_months": 37,
+        "historical_failures": 5,
+        "lifetime_value_paise": 70000,
+        "preferred_language": "hi",
+        "voice_consent": false,
+        "whatsapp_consent": true
+      }
+    },
+    {
+      "case_id": "razorpay_case_0022",
+      "derived_context": {
+        "failure_count_band": "high",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T13:04:57.050814+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMir6nogueQeO",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment"
+          ],
+          "created_at": 1788613496,
+          "entity": "event",
+          "event": "payment.failed",
+          "payload": {
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": null
+                },
+                "amount": 10000,
+                "amount_refunded": 0,
+                "bank": "IBKL",
+                "captured": false,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613493,
+                "currency": "INR",
+                "description": "#TYMdLcc0QSX2K9",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": "BAD_REQUEST_ERROR",
+                "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+                "error_reason": "payment_failed",
+                "error_source": "bank",
+                "error_step": "payment_authorization",
+                "fee": null,
+                "id": "pay_TYMimqRsos7XMc",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMdncZEoD1maD",
+                "refund_status": null,
+                "status": "failed",
+                "tax": null,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0022",
+        "customer_tenure_months": 26,
+        "historical_failures": 5,
+        "lifetime_value_paise": 90000,
+        "preferred_language": "hi",
+        "voice_consent": false,
+        "whatsapp_consent": false
+      }
+    },
+    {
+      "case_id": "razorpay_case_0023",
+      "derived_context": {
+        "failure_count_band": "high",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T13:05:12.765067+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMj8HbFJ1icI4",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment"
+          ],
+          "created_at": 1788613512,
+          "entity": "event",
+          "event": "payment.failed",
+          "payload": {
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": null
+                },
+                "amount": 10000,
+                "amount_refunded": 0,
+                "bank": "IBKL",
+                "captured": false,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613509,
+                "currency": "INR",
+                "description": "#TYMdLcc0QSX2K9",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": "BAD_REQUEST_ERROR",
+                "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+                "error_reason": "payment_failed",
+                "error_source": "bank",
+                "error_step": "payment_authorization",
+                "fee": null,
+                "id": "pay_TYMj4aLxzB4Xuv",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMdncZEoD1maD",
+                "refund_status": null,
+                "status": "failed",
+                "tax": null,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0023",
+        "customer_tenure_months": 16,
+        "historical_failures": 5,
+        "lifetime_value_paise": 100000,
+        "preferred_language": "hinglish",
+        "voice_consent": true,
+        "whatsapp_consent": true
+      }
+    },
+    {
+      "case_id": "razorpay_case_0024",
+      "derived_context": {
+        "failure_count_band": "high",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T13:06:49.881011+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMkpNUWrZjUQD",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment"
+          ],
+          "created_at": 1788613608,
+          "entity": "event",
+          "event": "payment.failed",
+          "payload": {
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "auth_code": null
+                },
+                "amount": 10000,
+                "amount_refunded": 0,
+                "captured": false,
+                "card": {
+                  "emi": false,
+                  "entity": "card",
+                  "id": "card_TYMkoT2dcc4Pf6",
+                  "international": "[REDACTED]",
+                  "issuer": null,
+                  "last4": "[REDACTED]",
+                  "name": "[REDACTED]",
+                  "network": "Visa",
+                  "sub_type": "consumer",
+                  "token_iin": "[REDACTED]",
+                  "type": "debit"
+                },
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613608,
+                "currency": "INR",
+                "description": "#TYMdLcc0QSX2K9",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": "BAD_REQUEST_ERROR",
+                "error_description": "Your payment could not be completed as this business accepts domestic (Indian) card payments only. Try another payment method.",
+                "error_reason": "international_transaction_not_allowed",
+                "error_source": "business",
+                "error_step": "payment_initiation",
+                "fee": null,
+                "id": "pay_TYMkoBd3wripHJ",
+                "international": "[REDACTED]",
+                "method": "card",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMdncZEoD1maD",
+                "refund_status": null,
+                "status": "failed",
+                "tax": null
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0024",
+        "customer_tenure_months": 28,
+        "historical_failures": 4,
+        "lifetime_value_paise": 80000,
+        "preferred_language": "hinglish",
+        "voice_consent": true,
+        "whatsapp_consent": false
+      }
+    },
+    {
+      "case_id": "razorpay_case_0025",
+      "derived_context": {
+        "failure_count_band": "high",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T13:07:48.232649+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMlryglp7kHoH",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment"
+          ],
+          "created_at": 1788613667,
+          "entity": "event",
+          "event": "payment.failed",
+          "payload": {
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": null
+                },
+                "amount": 10000,
+                "amount_refunded": 0,
+                "bank": "IBKL",
+                "captured": false,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613659,
+                "currency": "INR",
+                "description": "#TYMdLcc0QSX2K9",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": "BAD_REQUEST_ERROR",
+                "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+                "error_reason": "payment_failed",
+                "error_source": "bank",
+                "error_step": "payment_authorization",
+                "fee": null,
+                "id": "pay_TYMliLQrJbTBop",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMdncZEoD1maD",
+                "refund_status": null,
+                "status": "failed",
+                "tax": null,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0025",
+        "customer_tenure_months": 9,
+        "historical_failures": 4,
+        "lifetime_value_paise": 90000,
+        "preferred_language": "en",
+        "voice_consent": false,
+        "whatsapp_consent": true
+      }
+    },
+    {
+      "case_id": "razorpay_case_0026",
+      "derived_context": {
+        "failure_count_band": "low",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T13:08:44.567735+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMmquV0eMOAhj",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment"
+          ],
+          "created_at": 1788613723,
+          "entity": "event",
+          "event": "payment.authorized",
+          "payload": {
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": "6367581"
+                },
+                "amount": 10000,
+                "amount_refunded": 0,
+                "bank": "BARB_R",
+                "captured": false,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613685,
+                "currency": "INR",
+                "description": "#TYMdLcc0QSX2K9",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": null,
+                "error_description": null,
+                "error_reason": null,
+                "error_source": null,
+                "error_step": null,
+                "fee": null,
+                "id": "pay_TYMmAq3jVsqIKN",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMdncZEoD1maD",
+                "refund_status": null,
+                "status": "authorized",
+                "tax": null,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0026",
+        "customer_tenure_months": 8,
+        "historical_failures": 1,
+        "lifetime_value_paise": 120000,
+        "preferred_language": "hi",
+        "voice_consent": true,
+        "whatsapp_consent": true
+      }
+    },
+    {
+      "case_id": "razorpay_case_0027",
+      "derived_context": {
+        "failure_count_band": "high",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T13:08:45.273545+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMmsFw9ha2FoC",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment"
+          ],
+          "created_at": 1788613724,
+          "entity": "event",
+          "event": "payment.captured",
+          "payload": {
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": "6367581"
+                },
+                "amount": 10000,
+                "amount_refunded": 0,
+                "bank": "BARB_R",
+                "base_amount": 10000,
+                "captured": true,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613685,
+                "currency": "INR",
+                "description": "#TYMdLcc0QSX2K9",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": null,
+                "error_description": null,
+                "error_reason": null,
+                "error_source": null,
+                "error_step": null,
+                "fee": 260,
+                "id": "pay_TYMmAq3jVsqIKN",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMdncZEoD1maD",
+                "refund_status": null,
+                "reward": null,
+                "status": "captured",
+                "tax": 40,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0027",
+        "customer_tenure_months": 28,
+        "historical_failures": 4,
+        "lifetime_value_paise": 30000,
+        "preferred_language": "ta",
+        "voice_consent": true,
+        "whatsapp_consent": false
+      }
+    },
+    {
+      "case_id": "razorpay_case_0028",
+      "derived_context": {
+        "failure_count_band": "high",
+        "value_band": "standard"
+      },
+      "provenance": {
+        "derived_context": "DERIVED",
+        "provider_record": "RAZORPAY_TEST",
+        "synthetic_context": "SYNTHETIC"
+      },
+      "provider_record": {
+        "captured_at": "2026-09-05T13:08:45.978702+00:00",
+        "environment": "test",
+        "provider": "razorpay",
+        "provider_event_id": "TYMmt1lS6H1G3A",
+        "raw_payload": {
+          "account_id": "acc_RfVBBjuhJuJ6E3",
+          "contains": [
+            "payment_link",
+            "order",
+            "payment"
+          ],
+          "created_at": 1788613184,
+          "entity": "event",
+          "event": "payment_link.partially_paid",
+          "payload": {
+            "order": {
+              "entity": {
+                "amount": 60000,
+                "amount_due": 20000,
+                "amount_paid": 40000,
+                "attempts": 10,
+                "checkout": null,
+                "created_at": 1788613209,
+                "currency": "INR",
+                "description": null,
+                "entity": "order",
+                "id": "order_TYMdncZEoD1maD",
+                "notes": "[REDACTED]",
+                "offer_id": null,
+                "receipt": "vasooli-test-partial-003",
+                "status": "attempted"
+              }
+            },
+            "payment": {
+              "entity": {
+                "acquirer_data": {
+                  "bank_transaction_id": "6367581"
+                },
+                "amount": 10000,
+                "amount_refunded": 0,
+                "amount_transferred": 0,
+                "bank": "BARB_R",
+                "base_amount": 10000,
+                "captured": true,
+                "card": null,
+                "card_id": "[REDACTED]",
+                "contact": "[REDACTED]",
+                "created_at": 1788613685,
+                "currency": "INR",
+                "description": "#TYMdLcc0QSX2K9",
+                "email": "[REDACTED]",
+                "entity": "payment",
+                "error_code": null,
+                "error_description": null,
+                "error_reason": null,
+                "error_source": null,
+                "error_step": null,
+                "fee": 260,
+                "fee_bearer": "platform",
+                "id": "pay_TYMmAq3jVsqIKN",
+                "international": "[REDACTED]",
+                "invoice_id": null,
+                "method": "netbanking",
+                "notes": "[REDACTED]",
+                "order_id": "order_TYMdncZEoD1maD",
+                "refund_status": null,
+                "status": "captured",
+                "tax": 40,
+                "vpa": "[REDACTED]",
+                "wallet": null
+              }
+            },
+            "payment_link": {
+              "entity": {
+                "accept_partial": true,
+                "allow_full_payment": false,
+                "amount": 60000,
+                "amount_paid": 40000,
+                "cancelled_at": 0,
+                "created_at": 1788613184,
+                "currency": "INR",
+                "customer": {
+                  "contact": "[REDACTED]",
+                  "email": "[REDACTED]"
+                },
+                "description": "Vasooli partial payment test 003",
+                "expire_by": 0,
+                "expired_at": 0,
+                "first_min_partial_amount": 100,
+                "id": "plink_TYMdLcc0QSX2K9",
+                "notes": "[REDACTED]",
+                "notify": {
+                  "email": "[REDACTED]",
+                  "sms": false,
+                  "whatsapp": false
+                },
+                "order_id": "order_TYMdncZEoD1maD",
+                "payment_plan": false,
+                "reference_id": "vasooli-test-partial-003",
+                "reminder_enable": false,
+                "reminders": {},
+                "short_url": "https://rzp.io/rzp/WXnoZAC",
+                "status": "partially_paid",
+                "updated_at": 1788613724,
+                "upi_link": false,
+                "user_id": "RfVB5oY8YeU08k",
+                "whatsapp_link": false
+              }
+            }
+          }
+        },
+        "sanitized": true
+      },
+      "synthetic_context": {
+        "customer_reference": "synthetic_customer_0028",
+        "customer_tenure_months": 30,
+        "historical_failures": 4,
+        "lifetime_value_paise": 60000,
+        "preferred_language": "en",
+        "voice_consent": true,
+        "whatsapp_consent": true
+      }
+    }
+  ],
+  "dataset_type": "razorpay_augmented",
+  "seed": 42
+}
