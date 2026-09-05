@@ -22,6 +22,10 @@ class Settings(BaseSettings):
     groq_enabled: bool = False
     groq_primary_model: str = "openai/gpt-oss-20b"
     groq_escalation_model: str = "openai/gpt-oss-120b"
+    groq_stt_model: str = "whisper-large-v3-turbo"
+    groq_tts_model: str = "canopylabs/orpheus-v1-english"
+    groq_tts_voice: str = "hannah"
+    voice_ai_provider: str = "groq"
 
     high_value_threshold_paise: int = 1_000_000
     quiet_hours_start: int = 21

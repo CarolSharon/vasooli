@@ -1,169 +1,159 @@
-import asyncio
+import base64
 import json
+from datetime import datetime, timezone
 
-import websockets
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 
 from app.config import settings
 from app.database import SessionLocal
 from app.models import RecoveryCase, VoiceSession
+from app.realtime.groq_voice import (
+    GroqVoiceDecision,
+    GroqVoicePipeline,
+    mulaw_energy,
+    safe_result_message,
+    tool_for_decision,
+)
 from app.realtime.guarded_actions import execute_voice_tool
-from app.realtime.tools import VOICE_TOOLS
 
 router = APIRouter(tags=["voice-media"])
-SYSTEM_PROMPT = """You are Vasooli, a polite AI payment recovery assistant. Speak briefly in natural Hinglish unless English is requested. Never shame or threaten. Never request card numbers, CVV, OTP, UPI PIN, bank passwords, or mandate PIN. Never invent discounts or payment status. Confirm once before proposing a tool. Only send an existing link, record a clear future promise date, schedule a callback, open a dispute, opt out, or request human help. Keep the call under three minutes."""
+SILENCE_THRESHOLD = 300
+SILENCE_FRAMES = 35
+MINIMUM_TURN_BYTES = 3200
+
+
+async def send_audio(websocket: WebSocket, stream_sid: str, audio: bytes) -> None:
+    for start in range(0, len(audio), 160):
+        payload = base64.b64encode(audio[start : start + 160]).decode()
+        await websocket.send_json(
+            {"event": "media", "streamSid": stream_sid, "media": {"payload": payload}}
+        )
+
+
+def is_yes(text: str) -> bool:
+    normalized = " ".join(text.lower().split())
+    return normalized in {
+        "yes",
+        "yes please",
+        "haan",
+        "han",
+        "ha",
+        "theek hai",
+        "okay",
+        "ok",
+    }
+
+
+def is_no(text: str) -> bool:
+    normalized = " ".join(text.lower().split())
+    return normalized in {"no", "nahi", "nahin", "cancel", "mat karo"}
 
 
 @router.websocket("/api/twilio/media")
-async def twilio_media_stream(twilio_ws: WebSocket):
-    await twilio_ws.accept()
-    if not settings.openai_api_key:
-        await twilio_ws.close(code=1013, reason="Realtime service not configured")
+async def twilio_media_stream(websocket: WebSocket):
+    await websocket.accept()
+    if settings.voice_ai_provider != "groq" or not settings.groq_api_key:
+        await websocket.close(code=1013, reason="Groq voice is not configured")
         return
-    db, stream_sid, case_id, voice_session = SessionLocal(), None, None, None
-    try:
-        async with websockets.connect(
-            f"wss://api.openai.com/v1/realtime?model={settings.openai_realtime_model}",
-            additional_headers={"Authorization": f"Bearer {settings.openai_api_key}"},
-        ) as openai_ws:
-            await openai_ws.send(
-                json.dumps(
-                    {
-                        "type": "session.update",
-                        "session": {
-                            "type": "realtime",
-                            "model": settings.openai_realtime_model,
-                            "instructions": SYSTEM_PROMPT,
-                            "output_modalities": ["audio"],
-                            "audio": {
-                                "input": {
-                                    "format": {"type": "audio/pcmu"},
-                                    "turn_detection": {"type": "server_vad"},
-                                },
-                                "output": {
-                                    "format": {"type": "audio/pcmu"},
-                                    "voice": settings.openai_realtime_voice,
-                                },
-                            },
-                            "tools": VOICE_TOOLS,
-                            "tool_choice": "auto",
-                            "max_output_tokens": 300,
-                        },
-                    }
-                )
+
+    database = SessionLocal()
+    pipeline = GroqVoicePipeline(settings)
+    stream_sid: str | None = None
+    case: RecoveryCase | None = None
+    voice_session: VoiceSession | None = None
+    pending: GroqVoiceDecision | None = None
+    turn_audio = bytearray()
+    speech_started = False
+    silence_frames = 0
+
+    async def process_turn() -> None:
+        nonlocal pending
+        if not case or not voice_session or not stream_sid or not turn_audio:
+            return
+        transcript = await pipeline.transcribe(bytes(turn_audio))
+        if not transcript:
+            return
+        voice_session.transcript += f"CUSTOMER: {transcript}\n"
+        if pending and is_yes(transcript):
+            tool = tool_for_decision(pending)
+            result = (
+                execute_voice_tool(database, case=case, name=tool[0], arguments=tool[1])
+                if tool
+                else {"ok": False, "blocked_by": "INCOMPLETE_REQUEST"}
             )
+            reply = safe_result_message(result)
+            voice_session.final_intent = pending.intent
+            pending = None
+        elif pending and is_no(transcript):
+            pending = None
+            reply = "Theek hai, action cancel kar diya. Aur kaise help kar sakti hoon?"
+        else:
+            decision = await pipeline.decide(transcript)
+            tool = tool_for_decision(decision)
+            if tool:
+                pending = decision
+                reply = decision.confirmation_question
+            else:
+                reply = (
+                    "Main payment link, future payment date, callback, dispute, "
+                    "opt-out, ya human agent mein help kar sakti hoon."
+                )
+        voice_session.transcript += f"AGENT: {reply}\n"
+        database.commit()
+        await send_audio(websocket, stream_sid, await pipeline.synthesize(reply))
 
-            async def twilio_to_openai():
-                nonlocal stream_sid, case_id, voice_session
-                async for raw in twilio_ws.iter_text():
-                    event = json.loads(raw)
-                    if event["event"] == "start":
-                        stream_sid = event["start"]["streamSid"]
-                        raw_case_id = (
-                            event["start"].get("customParameters", {}).get("case_id")
-                        )
-                        case_id = (
-                            int(raw_case_id)
-                            if raw_case_id and raw_case_id.isdigit()
-                            else None
-                        )
-                        case = db.get(RecoveryCase, case_id)
-                        if not case:
-                            await twilio_ws.close(code=1008)
-                            return
-                        voice_session = VoiceSession(
-                            case_id=case.id,
-                            twilio_call_sid=event["start"].get("callSid"),
-                            status="CONNECTED",
-                        )
-                        db.add(voice_session)
-                        db.commit()
-                        await openai_ws.send(
-                            json.dumps(
-                                {
-                                    "type": "response.create",
-                                    "response": {
-                                        "instructions": f"Greet the customer. Outstanding amount is ₹{case.amount_paise / 100:.2f}. Ask how you can help."
-                                    },
-                                }
-                            )
-                        )
-                    elif event["event"] == "media":
-                        await openai_ws.send(
-                            json.dumps(
-                                {
-                                    "type": "input_audio_buffer.append",
-                                    "audio": event["media"]["payload"],
-                                }
-                            )
-                        )
-                    elif event["event"] == "stop":
-                        return
-
-            async def openai_to_twilio():
-                nonlocal voice_session
-                async for raw in openai_ws:
-                    event = json.loads(raw)
-                    kind = event.get("type", "")
-                    if kind == "response.output_audio.delta" and stream_sid:
-                        await twilio_ws.send_json(
-                            {
-                                "event": "media",
-                                "streamSid": stream_sid,
-                                "media": {"payload": event["delta"]},
-                            }
-                        )
-                    elif kind in {
-                        "conversation.item.input_audio_transcription.completed",
-                        "response.output_audio_transcript.done",
-                    }:
-                        transcript = event.get("transcript", "")
-                        if voice_session and transcript:
-                            voice_session.transcript += (
-                                (
-                                    "CUSTOMER: "
-                                    if kind.startswith("conversation.")
-                                    else "AGENT: "
-                                )
-                                + transcript
-                                + "\n"
-                            )
-                            db.commit()
-                    elif kind == "response.function_call_arguments.done" and case_id:
-                        case = db.get(RecoveryCase, case_id)
-                        try:
-                            arguments = json.loads(event.get("arguments") or "{}")
-                        except json.JSONDecodeError:
-                            arguments = {}
-                        result = execute_voice_tool(
-                            db, case=case, name=event["name"], arguments=arguments
-                        )
-                        if voice_session:
-                            voice_session.final_intent = event["name"]
-                            db.commit()
-                        await openai_ws.send(
-                            json.dumps(
-                                {
-                                    "type": "conversation.item.create",
-                                    "item": {
-                                        "type": "function_call_output",
-                                        "call_id": event["call_id"],
-                                        "output": json.dumps(result),
-                                    },
-                                }
-                            )
-                        )
-                        await openai_ws.send(json.dumps({"type": "response.create"}))
-                    elif kind == "input_audio_buffer.speech_started" and stream_sid:
-                        await twilio_ws.send_json(
-                            {"event": "clear", "streamSid": stream_sid}
-                        )
-
-            await asyncio.gather(twilio_to_openai(), openai_to_twilio())
+    try:
+        async for raw in websocket.iter_text():
+            event = json.loads(raw)
+            if event.get("event") == "start":
+                stream_sid = event["start"]["streamSid"]
+                raw_id = event["start"].get("customParameters", {}).get("case_id", "")
+                case = (
+                    database.get(RecoveryCase, int(raw_id))
+                    if raw_id.isdigit()
+                    else None
+                )
+                if not case:
+                    await websocket.close(code=1008, reason="Case not found")
+                    return
+                voice_session = VoiceSession(
+                    case_id=case.id,
+                    twilio_call_sid=event["start"].get("callSid"),
+                    status="CONNECTED",
+                )
+                database.add(voice_session)
+                database.commit()
+                greeting = "Namaste. Main Vasooli AI assistant hoon. Main aapki payment recovery mein kaise help kar sakti hoon?"
+                voice_session.transcript += f"AGENT: {greeting}\n"
+                database.commit()
+                await send_audio(
+                    websocket, stream_sid, await pipeline.synthesize(greeting)
+                )
+            elif event.get("event") == "media":
+                chunk = base64.b64decode(event["media"]["payload"])
+                energy = mulaw_energy(chunk)
+                if energy >= SILENCE_THRESHOLD:
+                    speech_started = True
+                    silence_frames = 0
+                elif speech_started:
+                    silence_frames += 1
+                if speech_started:
+                    turn_audio.extend(chunk)
+                if (
+                    silence_frames >= SILENCE_FRAMES
+                    and len(turn_audio) >= MINIMUM_TURN_BYTES
+                ):
+                    await process_turn()
+                    turn_audio.clear()
+                    speech_started = False
+                    silence_frames = 0
+            elif event.get("event") == "stop":
+                break
     except WebSocketDisconnect:
         pass
     finally:
         if voice_session:
             voice_session.status = "COMPLETED"
-            db.commit()
-        db.close()
+            voice_session.ended_at = datetime.now(timezone.utc)
+            database.commit()
+        database.close()
