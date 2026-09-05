@@ -1,3 +1,5 @@
+from uuid import uuid4
+
 import razorpay
 
 from app.config import settings
@@ -43,7 +45,9 @@ def create_payment_link(
             "customer": customer,
             "notify": {"sms": False, "email": False},
             "reminder_enable": False,
-            "reference_id": case_id,
+            # Razorpay requires reference_id to be unique for every payment link.
+            # Keep the stable case ID in notes so webhooks can still locate the case.
+            "reference_id": f"{case_id}-{uuid4().hex}",
             "notes": {"case_id": case_id, "source": "VASOOLI"},
             "callback_url": f"{settings.frontend_url}/payment/result",
             "callback_method": "get",

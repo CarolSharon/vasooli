@@ -13,7 +13,6 @@ from app.api.routes.razorpay import router as razorpay_router
 from app.api.routes.razorpay_webhooks import router as razorpay_webhook_router
 from app.api.routes.twilio import router as twilio_router
 from app.api.routes.voice import router as voice_router
-from app.api.webhooks import router as webhook_router
 from app.config import settings
 from app.database import engine
 
@@ -32,7 +31,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(webhook_router)
 app.include_router(razorpay_router)
 app.include_router(razorpay_webhook_router)
 app.include_router(twilio_router)
