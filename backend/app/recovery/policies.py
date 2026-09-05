@@ -2,7 +2,12 @@ from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
 from app.config import Settings
-from app.schemas import ActionType, PolicyDecision, PolicyResult, RecoveryCase
+from app.recovery.schemas import (
+    ActionType,
+    PolicyDecision,
+    PolicyResult,
+    RecoveryCase,
+)
 
 CONTACT_ACTIONS = {
     ActionType.SEND_REMINDER,
@@ -62,14 +67,20 @@ def authorize_action(
             code="MANDATE_REVOKED",
             reason="A revoked mandate cannot be retried; reauthorization is required.",
         )
-    if action == ActionType.RETRY_PAYMENT and case.attempt_count >= settings.max_retries:
+    if (
+        action == ActionType.RETRY_PAYMENT
+        and case.attempt_count >= settings.max_retries
+    ):
         return PolicyDecision(
             result=PolicyResult.ESCALATE,
             code="MAX_RETRIES_REACHED",
             reason="The automatic retry limit has been reached.",
             requires_human_review=True,
         )
-    if action == ActionType.SEND_REMINDER and case.reminder_count >= settings.max_reminders:
+    if (
+        action == ActionType.SEND_REMINDER
+        and case.reminder_count >= settings.max_reminders
+    ):
         return PolicyDecision(
             result=PolicyResult.BLOCK,
             code="MAX_REMINDERS_REACHED",

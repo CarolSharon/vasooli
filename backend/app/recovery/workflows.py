@@ -2,11 +2,16 @@ import hashlib
 import uuid
 from datetime import UTC, date, datetime
 
-from app.ai import DecisionService
 from app.config import Settings
-from app.database import insert_action, insert_audit, insert_promise, upsert_case
-from app.policies import authorize_action
-from app.schemas import (
+from app.recovery.ai import DecisionService
+from app.recovery.policies import authorize_action
+from app.recovery.repository import (
+    insert_action,
+    insert_audit,
+    insert_promise,
+    upsert_case,
+)
+from app.recovery.schemas import (
     AIDecision,
     CaseStatus,
     PolicyResult,
@@ -157,9 +162,14 @@ def evaluate_promise(case: RecoveryCase, today: date | None = None) -> dict:
 
 def process_voice_turn(request: VoiceTurnRequest) -> dict:
     utterance = request.customer_utterance.lower()
-    if any(phrase in utterance for phrase in ["stop", "don't call", "do not call", "mat call"]):
+    if any(
+        phrase in utterance
+        for phrase in ["stop", "don't call", "do not call", "mat call"]
+    ):
         intent, next_action = "opt_out", "stop_all_contact"
-    elif any(phrase in utterance for phrase in ["friday", "tomorrow", "kal", "pay kar"]):
+    elif any(
+        phrase in utterance for phrase in ["friday", "tomorrow", "kal", "pay kar"]
+    ):
         intent, next_action = "promise_to_pay", "confirm_amount_and_date"
     elif any(phrase in utterance for phrase in ["dispute", "wrong amount", "galat"]):
         intent, next_action = "dispute", "escalate_human"

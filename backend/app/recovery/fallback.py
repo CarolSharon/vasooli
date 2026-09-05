@@ -1,4 +1,4 @@
-from app.schemas import ActionType, AIDecision, CaseType, RecoveryCase
+from app.recovery.schemas import ActionType, AIDecision, CaseType, RecoveryCase
 
 
 def deterministic_diagnosis(case: RecoveryCase) -> AIDecision:

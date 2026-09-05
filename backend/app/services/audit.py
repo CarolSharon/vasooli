@@ -21,6 +21,29 @@ class AuditEventType(StrEnum):
     CASE_ESCALATED = "CASE_ESCALATED"
 
 
+def append_audit(
+    database: Session,
+    *,
+    case_id: int | None,
+    event_type: str,
+    actor: str,
+    data: dict[str, Any],
+) -> AuditEvent:
+    event = AuditEvent(
+        case_id=case_id,
+        actor=actor,
+        event_type=event_type,
+        input_summary=None,
+        decision=data.get("decision"),
+        reason=data.get("reason"),
+        policy_result=data.get("policy_result"),
+        metadata_json=data,
+    )
+    database.add(event)
+    database.flush()
+    return event
+
+
 def record_audit_event(
     database: Session,
     *,

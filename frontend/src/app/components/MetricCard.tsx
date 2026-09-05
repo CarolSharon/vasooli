@@ -1,0 +1,1 @@
+export function MetricCard({ label, value, accent = false }: { label: string; value: string | number; accent?: boolean }) { return <article className={`rounded-xl border p-5 ${accent ? "border-emerald-500 bg-emerald-50" : "bg-white"}`}><p className="text-sm text-gray-500">{label}</p><p className="mt-2 text-3xl font-semibold">{value}</p></article>; }

@@ -2,9 +2,17 @@ import json
 from pathlib import Path
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from redis import Redis
 from sqlalchemy import text
 
+from app.api.routes.dashboard import router as dashboard_router
+from app.api.routes.media_stream import router as media_stream_router
+from app.api.routes.razorpay import router as razorpay_router
+from app.api.routes.razorpay_webhooks import router as razorpay_webhook_router
+from app.api.routes.twilio import router as twilio_router
+from app.api.routes.voice import router as voice_router
 from app.api.webhooks import router as webhook_router
 from app.config import settings
 from app.database import engine
@@ -16,7 +24,26 @@ app = FastAPI(
     version="0.1.0",
 )
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[settings.frontend_url],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 app.include_router(webhook_router)
+app.include_router(razorpay_router)
+app.include_router(razorpay_webhook_router)
+app.include_router(twilio_router)
+app.include_router(voice_router)
+app.include_router(media_stream_router)
+app.include_router(dashboard_router)
+app.mount(
+    "/audio",
+    StaticFiles(directory=PROJECT_ROOT / "backend/app/static/audio"),
+    name="audio",
+)
 
 
 @app.get("/health")

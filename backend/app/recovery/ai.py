@@ -3,8 +3,8 @@ import json
 from openai import OpenAI
 
 from app.config import Settings
-from app.fallback import deterministic_diagnosis
-from app.schemas import AIDecision, RecoveryCase
+from app.recovery.fallback import deterministic_diagnosis
+from app.recovery.schemas import AIDecision, RecoveryCase
 
 SYSTEM_INSTRUCTIONS = """
 You diagnose revenue-recovery cases.
@@ -23,9 +23,7 @@ class DecisionService:
     def __init__(self, settings: Settings):
         self.settings = settings
         self.client = (
-            OpenAI(api_key=settings.openai_api_key)
-            if settings.openai_api_key
-            else None
+            OpenAI(api_key=settings.openai_api_key) if settings.openai_api_key else None
         )
 
     def choose_model(self, case: RecoveryCase) -> str:
