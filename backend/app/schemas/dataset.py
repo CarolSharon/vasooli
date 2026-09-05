@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 from enum import StrEnum
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -53,15 +53,24 @@ class DatasetCase(BaseModel):
     voice_consent: bool
     opted_out: bool
     already_refunded: bool
+    order_cancelled: bool = False
     alternate_payment_found: bool
     invoice_disputed: bool
     mandate_active: bool | None
+    duplicate_webhook: bool = False
+    out_of_order_event: bool = False
+    invalid_contact: bool = False
+    manual_review: bool = False
 
     historical_failures: int = Field(ge=0)
     subscription_age_months: int = Field(ge=0)
     lifetime_value_paise: int = Field(ge=0)
     preferred_language: str
     timezone: str
+    reminder_count: int = Field(default=0, ge=0)
+    voice_call_count: int = Field(default=0, ge=0)
+    promise_date: date | None = None
+    recovered_amount_paise: int = Field(default=0, ge=0)
 
     expected_policy: str
     simulated_outcome: str
