@@ -1,69 +1,88 @@
-import Image from "next/image";
+export const dynamic = "force-dynamic";
 
-export default function Home() {
+type Health = {
+  status: string;
+  postgresql: string;
+  redis: string;
+  dataset: {
+    cases: number;
+    development: number;
+    held_out: number;
+    locked: boolean;
+  };
+};
+
+async function getHealth(): Promise<Health | null> {
+  const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000";
+  try {
+    const response = await fetch(`${apiUrl}/health`, { cache: "no-store" });
+    if (!response.ok) return null;
+    return response.json();
+  } catch {
+    return null;
+  }
+}
+
+function StatusRow({ label, ready }: { label: string; ready: boolean }) {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div className="flex items-center justify-between border-b border-slate-800 py-4 last:border-0">
+      <span className="text-slate-300">{label}</span>
+      <span className={ready ? "text-emerald-400" : "text-rose-400"}>
+        {ready ? "connected" : "unavailable"}
+      </span>
     </div>
+  );
+}
+
+export default async function Home() {
+  const health = await getHealth();
+
+  return (
+    <main className="min-h-screen bg-slate-950 px-6 py-16 text-white">
+      <div className="mx-auto max-w-5xl">
+        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-emerald-400">
+          Recovery intelligence
+        </p>
+        <h1 className="text-5xl font-bold tracking-tight">Vasooli</h1>
+        <p className="mt-4 max-w-2xl text-lg text-slate-400">
+          Day 1 infrastructure and evaluation dataset status.
+        </p>
+
+        <section className="mt-12 grid gap-6 md:grid-cols-2">
+          <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+            <h2 className="text-xl font-semibold">Services</h2>
+            <div className="mt-4">
+              <StatusRow label="API" ready={health?.status === "ok"} />
+              <StatusRow
+                label="PostgreSQL"
+                ready={health?.postgresql === "connected"}
+              />
+              <StatusRow label="Redis" ready={health?.redis === "connected"} />
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+            <h2 className="text-xl font-semibold">Dataset</h2>
+            <dl className="mt-4 space-y-4 text-slate-300">
+              <div className="flex justify-between">
+                <dt>Cases</dt><dd>{health?.dataset.cases ?? 300}</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt>Development</dt><dd>{health?.dataset.development ?? 240}</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt>Held-out</dt><dd>{health?.dataset.held_out ?? 60}</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt>Held-out</dt>
+                <dd className="text-amber-300">
+                  {(health?.dataset.locked ?? true) ? "locked" : "unlocked"}
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </section>
+      </div>
+    </main>
   );
 }
