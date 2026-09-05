@@ -115,3 +115,14 @@ or a clearly labelled simulated confirmed-payment outcome.
 6. Freeze policies, prompts and outcome assumptions.
 7. Process the held-out cases once.
 8. Publish successful, unsuccessful, blocked and escalated outcomes.
+
+## Held-out lock
+
+- Held-out cases: 60
+- Canonical SHA-256: `bda35fe8d6cf4a0eb5fd0f2b08ad1354454bd4ed3d6e18fc8813ab3f146517e6`
+- Dataset-generation commit: pending until the locked dataset commit is created
+- Checksum method: JSON keys sorted, compact separators, UTF-8 encoded
+
+The checksum is calculated from canonical JSON. Therefore, `shasum -a 256`
+on the formatted file may produce a different value without indicating that
+the dataset contents changed.
