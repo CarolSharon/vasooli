@@ -10,16 +10,13 @@ from sqlalchemy.orm import Session
 from app.config import settings
 from app.database import get_database
 from app.models import PaymentEvent
+from app.services.audit import record_audit_event
 
 router = APIRouter(prefix="/webhooks", tags=["webhooks"])
 
 
 def find_payment(payload: dict[str, Any]) -> dict[str, Any]:
-    return (
-        payload.get("payload", {})
-        .get("payment", {})
-        .get("entity", {})
-    )
+    return payload.get("payload", {}).get("payment", {}).get("entity", {})
 
 
 @router.post("/razorpay", status_code=200)
@@ -55,18 +52,6 @@ async def receive_razorpay_webhook(
             detail="Invalid webhook signature",
         )
 
-    existing_event = (
-        database.query(PaymentEvent)
-        .filter(PaymentEvent.provider_event_id == x_razorpay_event_id)
-        .first()
-    )
-
-    if existing_event:
-        return {
-            "status": "duplicate",
-            "event_id": x_razorpay_event_id,
-        }
-
     try:
         payload = json.loads(raw_body)
     except json.JSONDecodeError as error:
@@ -93,6 +78,17 @@ async def receive_razorpay_webhook(
         database.commit()
     except IntegrityError:
         database.rollback()
+        record_audit_event(
+            database,
+            case_id=None,
+            actor="razorpay_webhook",
+            event_type="DUPLICATE_SUPPRESSED",
+            input_summary="Duplicate Razorpay webhook received.",
+            decision="SUPPRESS",
+            reason="The provider event identifier already exists.",
+            policy_result={"result": "BLOCK", "code": "DUPLICATE_EVENT"},
+            metadata={"provider_event_id": x_razorpay_event_id},
+        )
 
         return {
             "status": "duplicate",
