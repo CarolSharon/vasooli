@@ -18,6 +18,11 @@ class Settings(BaseSettings):
     openai_realtime_model: str = "gpt-realtime-2.1"
     openai_realtime_voice: str = "marin"
 
+    groq_api_key: str | None = None
+    groq_enabled: bool = False
+    groq_primary_model: str = "openai/gpt-oss-20b"
+    groq_escalation_model: str = "openai/gpt-oss-120b"
+
     high_value_threshold_paise: int = 1_000_000
     quiet_hours_start: int = 21
     quiet_hours_end: int = 9
