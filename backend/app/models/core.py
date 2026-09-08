@@ -58,6 +58,19 @@ class RecoveryCase(Base):
     status: Mapped[str] = mapped_column(String(50))
     failure_reason: Mapped[str | None] = mapped_column(String(255))
     root_cause: Mapped[str | None] = mapped_column(Text)
+    recommended_action: Mapped[str | None] = mapped_column(String(100))
+    workflow_type: Mapped[str | None] = mapped_column(String(100))
+    funnel_stage: Mapped[str] = mapped_column(
+        String(50), default="DETECTED", server_default="DETECTED"
+    )
+    provider_status: Mapped[str | None] = mapped_column(String(50))
+    outcome_provenance: Mapped[str | None] = mapped_column(String(50))
+    failure_code: Mapped[str | None] = mapped_column(String(100))
+    failure_description: Mapped[str | None] = mapped_column(Text)
+    latest_payment_url: Mapped[str | None] = mapped_column(Text)
+    invoice_disputed: Mapped[bool] = mapped_column(
+        Boolean, default=False, server_default="false"
+    )
     risk_score: Mapped[float | None] = mapped_column(Float)
     attempt_count: Mapped[int] = mapped_column(Integer, default=0)
     next_action_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))

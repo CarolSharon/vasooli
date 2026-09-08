@@ -27,3 +27,6 @@ def get_database():
         yield database
     finally:
         database.close()
+
+
+get_db = get_database

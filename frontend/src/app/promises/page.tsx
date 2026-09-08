@@ -1,0 +1,3 @@
+import Link from "next/link"; import { apiGet } from "@/lib/api";
+type PromiseRow = { id: number; case_id: number; amount: number; due_at: string; status: string; source: string };
+export default async function Promises() { const rows = await apiGet<PromiseRow[]>("/api/dashboard/promises"); return <main className="min-h-screen bg-slate-50 p-8"><Link href="/" className="text-emerald-700">← Dashboard</Link><h1 className="my-6 text-3xl font-bold">Promise tracker</h1><div className="space-y-3">{rows.map(row => <article className="rounded-xl border bg-white p-4" key={row.id}>Case {row.case_id} · ₹{row.amount.toFixed(2)} · due {row.due_at} · {row.status} · {row.source}</article>)}</div></main>; }

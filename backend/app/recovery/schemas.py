@@ -1,3 +1,5 @@
+"""Validated recovery workflow contracts."""
+
 from datetime import date, datetime
 from enum import StrEnum
 

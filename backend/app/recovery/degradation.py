@@ -1,4 +1,4 @@
-from app.schemas import ActionType, DegradationRequest
+from app.recovery.schemas import ActionType, DegradationRequest
 
 
 def detect_degradation(request: DegradationRequest) -> dict:

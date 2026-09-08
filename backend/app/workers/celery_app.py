@@ -8,6 +8,13 @@ celery_app = Celery(
     backend=settings.redis_url,
 )
 
+celery_app.conf.beat_schedule = {
+    "check-overdue-promises-every-5-minutes": {
+        "task": "check_overdue_promises",
+        "schedule": 300.0,
+    }
+}
+
 celery_app.conf.update(
     timezone="Asia/Kolkata",
     enable_utc=True,
